@@ -11,41 +11,38 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Reservations (DATA)
+
 var tables = [
-  {
-    id: "...",
-    name: "...",
-    email: "...",
-    phone: "..."
-  },
-  {
-    id: "....",
-    name: "....",
-    email: "....",
-    phone: "...."
-  }
-];
+    {
+        id: "",
+        name: "",
+        email: "",
+        phone: ""
+    }
+]
 
-// Routes
+app.get("/", function(req,res){
+    res.sendFile(path.join(__dirname, "index.html"));
+})
 
-// Basic routes that send the user first to the AJAX Page
-app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "index.html"));
-});
+app.get("/reservationForm", function(req,res){
+    res.sendFile(path.join(__dirname, "reservationForm.html"));
+})
 
-app.get("/reservationform", function(req, res) {
-  res.sendFile(path.join(__dirname, "reservationForm.html"));
-});
+app.get("/reservationViews", function(req,res){
+    res.sendFile(path.join(__dirname, "reservationViews.html"));
+})
 
-// Displays all tables api
-app.get("/api/tables", function(req, res) {
-  return res.json(tables);
-});
+app.get("/api/tables", function(req, res){
+    return res.json(tables);
+})
 
-// Displays waitlist api
-app.get("/api/waitlist", function(req, res){
-    return res.json(waitlist);
-});
+app.get("/api/tableform", function(req,res){
+    var newTable = req.body;
+    console.log(newTable);
+    tables.push(newTable);
+    res.json(newTable);
+})
 
 // // Create New Reservation/Table - takes in JSON input
 // app.post("/api/tables", function(req, res) {
@@ -66,6 +63,7 @@ app.get("/api/waitlist", function(req, res){
 
 // Starts the server to begin listening
 // =============================================================
+
 app.listen(PORT,function(){
     console.log("App listening on PORT " + PORT);
 });
