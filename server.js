@@ -28,7 +28,7 @@ var tables = [
 
 // Routes
 
-// Basic route that sends the user first to the AJAX Page
+// Basic routes that send the user first to the AJAX Page
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "index.html"));
 });
@@ -37,9 +37,14 @@ app.get("/reservationform", function(req, res) {
   res.sendFile(path.join(__dirname, "reservationForm.html"));
 });
 
-// Displays all tables
+// Displays all tables api
 app.get("/api/tables", function(req, res) {
   return res.json(tables);
+});
+
+// Displays waitlist api
+app.get("/api/waitlist", function(req, res){
+    return res.json(waitlist);
 });
 
 // // Create New Reservation/Table - takes in JSON input
