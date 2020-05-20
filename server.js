@@ -33,8 +33,8 @@ app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.get("/add", function(req, res) {
-  res.sendFile(path.join(__dirname, "tables.html"));
+app.get("/reservationform", function(req, res) {
+  res.sendFile(path.join(__dirname, "reservationForm.html"));
 });
 
 // Displays all tables
@@ -42,22 +42,22 @@ app.get("/api/tables", function(req, res) {
   return res.json(tables);
 });
 
-// Create New Reservation/Table - takes in JSON input
-app.post("/api/tables", function(req, res) {
-  // req.body hosts is equal to the JSON post sent from the user
-  // This works because of our body parsing middleware
-  var newTable = req.body;
+// // Create New Reservation/Table - takes in JSON input
+// app.post("/api/tables", function(req, res) {
+//   // req.body hosts is equal to the JSON post sent from the user
+//   // This works because of our body parsing middleware
+//   var newTable = req.body;
 
-  // Using a RegEx Pattern to remove spaces from newTable
-  // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  newTable.routeName = newTable.name.replace(/\s+/g, "").toLowerCase();
+//   // Using a RegEx Pattern to remove spaces from newTable
+//   // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+//   newTable.routeName = newTable.name.replace(/\s+/g, "").toLowerCase();
 
-  console.log(newTable);
+//   console.log(newTable);
 
-  tables.push(newTable);
+//   tables.push(newTable);
 
-  res.json(newTable);
-});
+//   res.json(newTable);
+// });
 
 // Starts the server to begin listening
 // =============================================================
