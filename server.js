@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Reservations (DATA)
-var reservations = [
+var tables = [
   {
     id: "...",
     name: "...",
