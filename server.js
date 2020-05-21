@@ -73,32 +73,8 @@ app.post("/api/tables/reservation", function(req, res) {
   });
 
 
+// Start the server to begin listening
 
-// app.post("/api/notes", (req,res) =>{
-//     var newNote = req.body;
-//     fs.appendFile("db.json", newNote, "utf8");
-//     res.json(newNote);
-// })
-
-// // Create New Reservation/Table - takes in JSON input
-// app.post("/api/tables", function(req, res) {
-//   // req.body hosts is equal to the JSON post sent from the user
-//   // This works because of our body parsing middleware
-//   var newTable = req.body;
-
-//   // Using a RegEx Pattern to remove spaces from newTable
-//   // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-//   newTable.routeName = newTable.name.replace(/\s+/g, "").toLowerCase();
-
-//   console.log(newTable);
-
-//   tables.push(newTable);
-
-//   res.json(newTable);
-// });
-
-// Starts the server to begin listening
-// =============================================================
 
 app.listen(PORT,function(){
     console.log("App listening on PORT " + PORT);
