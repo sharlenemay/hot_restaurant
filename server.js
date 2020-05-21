@@ -12,6 +12,15 @@ app.use(express.json());
 
 // Reservations (DATA)
 
+var waitlist = [
+    {
+        id: "",
+        name: "",
+        email: "",
+        phone: "" 
+    }
+]
+
 var tables = [
     {
         id: "",
@@ -37,12 +46,34 @@ app.get("/api/tables", function(req, res){
     return res.json(tables);
 })
 
+app.get("/api/waitlist", function(req, res){
+    return res.json(waitlist);
+})
+
 app.get("/api/tableform", function(req,res){
     var newTable = req.body;
     console.log(newTable);
     tables.push(newTable);
     res.json(newTable);
 })
+
+app.post("/api/tables/reservation", function(req, res) {
+    var request = req.body;
+    if (tables.length < 5){
+        tables.push(request);
+        res.json(true);
+    }
+    else {
+        waitlist.push(request);
+        res.json(false);
+    }
+  });
+
+// app.post("/api/notes", (req,res) =>{
+//     var newNote = req.body;
+//     fs.appendFile("db.json", newNote, "utf8");
+//     res.json(newNote);
+// })
 
 // // Create New Reservation/Table - takes in JSON input
 // app.post("/api/tables", function(req, res) {
