@@ -22,6 +22,8 @@ var waitlist = [
     }
 ]
 
+console.log("restart!!")
+
 var tables = [
     {
         id: tableid,
