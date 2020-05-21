@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "npm run kill && nodemon server.js",
+    "kill": "kill-port 3000"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,8 @@
   },
   "homepage": "https://github.com/sharlenemay/hot_restaurant#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "kill-port": "^1.6.0",
+    "nodemon": "^2.0.4"
   }
 }
