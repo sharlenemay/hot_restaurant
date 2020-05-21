@@ -79,10 +79,14 @@
         id: $("#id").val().trim()
       };
 
-      $.post("/api/table/reservation", newTable)
+      $.post("/api/tables/reservation", newTable)
         .then(function(data) {
           console.log("reservationForm.html", data);
           alert("Adding reservation...");
+          $("#name").empty();
+          $("#email").empty();
+          $("#phone").empty();
+          $("#id").empty();
         });
     });
     </script>
