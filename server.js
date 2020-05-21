@@ -11,10 +11,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Reservations (DATA)
-
+var tableid = 0;
+var waitid = 0;
 var waitlist = [
     {
-        id: "",
+        id: waitid,
         name: "",
         email: "",
         phone: "" 
@@ -23,7 +24,7 @@ var waitlist = [
 
 var tables = [
     {
-        id: "",
+        id: tableid,
         name: "",
         email: "",
         phone: ""
@@ -62,12 +63,16 @@ app.post("/api/tables/reservation", function(req, res) {
     if (tables.length < 5){
         tables.push(request);
         res.json(true);
+        tableid++;
     }
     else {
         waitlist.push(request);
         res.json(false);
+        waitid++;
     }
   });
+
+
 
 // app.post("/api/notes", (req,res) =>{
 //     var newNote = req.body;
